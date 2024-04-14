@@ -1,0 +1,317 @@
+/* Variables */
+:root {
+  --primary: #5493e4;
+  --business: #ef89e0;
+  --personal: var(--primary);
+  --light: #eee;
+  --grey: #888;
+  --dark: #313154;
+  --danger: #f81b1b;
+
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
+  --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+}
+/* End of Variables */
+
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat", sans-serif;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: initial;
+}
+/* End of Resets */
+
+body {
+  background-image: url("bckg.jpg");
+  color: var(--dark);
+}
+
+section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+h3 {
+  color: var(--dark);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+h4 {
+  color: var(--grey);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.greeting .title {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 90%;
+  position: relative;
+  overflow: hidden;
+  animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.greeting .title::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 70%;
+  height: 140%;
+  background: linear-gradient(
+    45deg,
+    #e0c3fc,
+    #8ec5fc,
+    #a8edea,
+    #c3e0c3,
+    #c6d8ff,
+    #d3b7e0,
+    #e0b0ff
+  );
+  z-index: -1;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.greeting .title input {
+  margin-left: 0.5rem;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.greeting .title,
+.greeting .title input {
+  color: var(--dark);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.create-todo input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 1.125rem;
+  padding: 1rem 1.5rem;
+  color: var(--dark);
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.create-todo .options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.create-todo .options label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 2px solid var(--business);
+  box-shadow: var(--business-glow);
+}
+
+.bubble.personal {
+  border-color: var(--personal);
+  box-shadow: var(--personal-glow);
+}
+
+.bubble::after {
+  content: "";
+  display: block;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  background-color: var(--business);
+  box-shadow: var(--business-glow);
+  border-radius: 999px;
+  transition: 0.2s ease-in-out;
+}
+
+.bubble.personal::after {
+  background-color: var(--personal);
+  box-shadow: var(--personal-glow);
+}
+
+input:checked ~ .bubble::after {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+.create-todo .options label div {
+  color: var(--dark);
+  font-size: 1.125rem;
+  margin-top: 1rem;
+}
+
+.due-date-container {
+  margin-bottom: 1.5rem;
+}
+
+.due-date-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.due-date-options input[type="date"] {
+  padding: 1.5rem;
+  font-size: 1.125rem;
+  color: var(--dark);
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.due-date-options input[type="submit"] {
+  display: block;
+  font-size: 1.125rem;
+  padding: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--primary);
+  box-shadow: var(--personal-glow);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+
+.due-date-options input[type="submit"]:hover {
+  opacity: 0.75;
+}
+
+.todo-list .list {
+  margin: 1rem 0;
+}
+
+.todo-list .todo-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.todo-item label {
+  display: block;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.todo-item .todo-content {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-item .todo-content input {
+  color: var(--dark);
+  font-size: 1.125rem;
+}
+
+.todo-item .todo-content .due-date {
+  font-size: 0.9rem;
+  color: var(--grey);
+  margin-top: 0.25rem;
+}
+
+.todo-item .actions {
+  display: flex;
+  align-items: center;
+}
+
+.todo-item .actions button {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.todo-item .actions button:hover {
+  opacity: 0.75;
+}
+
+.todo-item .actions .edit {
+  margin-right: 0.5rem;
+  background-color: var(--primary);
+}
+
+.todo-item .actions .delete {
+  background-color: var(--danger);
+}
+
+.todo-item.done .todo-content input {
+  text-decoration: line-through;
+  color: var(--grey);
+}
